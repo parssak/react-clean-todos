@@ -1,12 +1,15 @@
-import React from 'react';
-import './App.css';
-import TaskList from './components/TaskList';
+import React from "react";
+import { RecoilRoot } from "recoil";
+import "./App.css";
+import TaskList from "./components/TaskList";
 
 function App() {
   return (
-    <div className="App">
+    <RecoilRoot>
+      <div className="app">
         <TaskList />
-    </div>
+      </div>
+    </RecoilRoot>
   );
 }
 

@@ -1,18 +1,23 @@
-import React, { ReactElement } from 'react'
-import { ITask } from '../utils/tasks.utils'
+import React, { ReactElement } from "react";
+import useTasks from "../hooks/useTasks";
+import { ITask } from "../utils/tasks.utils";
 
 interface Props {
   task: ITask;
-  toggleTask: (taskID: string) => void;
-  removeTask: (taskID: string) => void;
 }
 
-export default function TaskItem({ task, toggleTask, removeTask }: Props): ReactElement {
+export default function TaskItem({ task }: Props): ReactElement {
+  const { toggleTask, removeTask } = useTasks();
+
   return (
     <div>
-      <input type="checkbox" onClick={() => toggleTask(task._id)} checked={task.completed} />
+      <input
+        type="checkbox"
+        onClick={() => toggleTask(task._id)}
+        checked={task.completed}
+      />
       {task.title}
       <button onClick={() => removeTask(task._id)}>Delete task</button>
     </div>
-  )
+  );
 }
